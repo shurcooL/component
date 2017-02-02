@@ -6,6 +6,7 @@ import (
 
 	"github.com/shurcooL/htmlg"
 	"golang.org/x/net/html"
+	"golang.org/x/net/html/atom"
 )
 
 // Text component.
@@ -41,4 +42,24 @@ func Join(a ...interface{}) List {
 		}
 	}
 	return list
+}
+
+// Link component.
+type Link struct {
+	Text   string
+	URL    string
+	NewTab bool // Open link in new tab.
+}
+
+func (l Link) Render() []*html.Node {
+	a := &html.Node{
+		Type: html.ElementNode, Data: atom.A.String(),
+		Attr:       []html.Attribute{{Key: atom.Href.String(), Val: l.URL}},
+		FirstChild: htmlg.Text(l.Text),
+	}
+	if l.NewTab {
+		a.Attr = append(a.Attr, html.Attribute{Key: atom.Target.String(), Val: "_blank"})
+		// TODO: Add rel="noopener", see https://dev.to/ben/the-targetblank-vulnerability-by-example.
+	}
+	return []*html.Node{a}
 }
