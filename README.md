@@ -1,15 +1,15 @@
 component
 =========
 
-[![Build Status](https://travis-ci.org/shurcooL/component.svg?branch=master)](https://travis-ci.org/shurcooL/component) [![GoDoc](https://godoc.org/github.com/shurcooL/component?status.svg)](https://godoc.org/github.com/shurcooL/component)
+[![Go Reference](https://pkg.go.dev/badge/github.com/shurcooL/component.svg)](https://pkg.go.dev/github.com/shurcooL/component)
 
 Package component is a collection of basic HTML components.
 
 Installation
 ------------
 
-```bash
-go get -u github.com/shurcooL/component
+```sh
+go get github.com/shurcooL/component
 ```
 
 License
